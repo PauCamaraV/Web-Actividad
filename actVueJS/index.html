@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turismo Quintana Roo </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+</head>
+<body>
+    
+    <div class="text-center" style="background-color:#f0a759" >
+        <font size = "8"> Turismo: Quintana Roo </font>
+        <br>
+    </div>
+    <br>
+
+    <div class="container-fluid" >
+        <div class="row"  >
+          <div class="col-md-6" id="app">
+            <h2>Lugares </h2>
+            <p>Elige un lugar para visitar</p>
+            <select v-model="lugar">
+                <option>Cancun</option>
+                <option>Cozumel</option>
+                <option>Isla Mujeres</option>
+                <option>Playa del Carmen</option>
+                <option>Puerto Morelos</option>
+              </select>
+              <br><br>
+              <template v-if=" lugar === 'Cancun'">
+                <img  src="https://www.caribjournal.com/wp-content/uploads/2020/08/cancun-all-inclusive-new-resort-cover.jpg" style="width:450px;height:225px;">
+              </template>
+              <template v-else-if="lugar === 'Cozumel'">
+                    <img  src="https://pasilloturistico.com/wp-content/uploads/2020/06/cozumel_shutterstock_275183.jpg_554688468.jpg" style="width:450px;height:225px;">
+                </template>
+              <template v-else-if="lugar === 'Isla Mujeres'">
+                    <img  src="https://www.reportur.com/wp-content/uploads/2020/03/PLaya-Norte-Islasmujeres2.jpg" style="width:450px;height:225px;">
+                </template>
+              <template v-else-if = "lugar === 'Playa del Carmen'">
+                    <img  src="https://periodicoviaje.com/wp-content/uploads/2020/08/playa-del-carmen.jpg" style="width:450px;height:225px;">
+                </template>
+              <template v-else-if="lugar === 'Puerto Morelos'">
+                    <img  src="https://clubsolaris.com/imgs/es/que-hace-a-puerto-morelos-tan-especial/puerto-morelos-faro-header.jpg" style="width:450px;height:225px;">
+                </template>
+              <template v-else>
+                <img src="https://0201.nccdn.net/4_2/000/000/071/260/Quintana-Roo-01-3840x2160.jpg" style="width:450px;height:225px;">
+              </template>
+              <h3>{{ lugar }}</h3>
+          </div>
+            <div class="col-sm-6"  id="playas">
+                    <h2>Playas mas populares</h2>
+                <button @click="toggle1 = !toggle1">Mostrar</button>
+                <div v-if="toggle1"></div>
+                <div v-else>
+                    <br><br>
+                    <ul>
+                        <li v-for="(value, index) in array">
+                            {{ value }}
+                        </li>
+                    </ul>
+                                      
+                </div>
+            </div> 
+             
+        </div>
+        <div class="container" style="margin-left: 40%; margin-top: 50px;"  id="parques">
+                <h2>Parques</h2>
+                        <p>Adivina el parque</p>
+                            <button class="btn btn-primary" v-on:click="park = Math.floor((Math.random() * 10) + 1)">Click</button>
+                            <template v-if="park  === 0" ></template>
+                            <template v-if="park  > 0 && park  < 4" >
+                              <br><br><img src="https://vivecancun.com/fotos/xelhatodoincluido2.jpg" style="width:450px;height:225px;">
+                            </template>
+                            <template v-else-if="park  > 3 && park  < 7 ">
+                                    <br><br><img src="https://vivecancun.com/fotos/xcaretplus2.jpg" style="width:450px;height:225px;">
+                            </template>
+                            <template v-else-if="park  > 6">
+                              <br><br><img src="https://www.discoverytoursmexico.com/uploads/21/xplor2.jpg" style="width:450px;height:225px;">
+                            </template>
+                    </div>
+        </div>
+        </div> 
+      </div>
+  
+  
+  <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  
+    <script>
+        var app1=new Vue({
+          el: '#app',
+          data: {
+              lugar: ''
+          }});
+    </script>
+
+  <script>
+        var app2 = new Vue({
+          el: '#parques',
+      data: {
+        park: 0
+      }})
+    </script>
+
+    <script>
+        new Vue({
+            el: '#playas',
+            data: {
+            array: ['Playa Paraíso', 'Playa Moroma.','Playa Norte' ,'Holbox' ,'Akumal' ,'Xpu-ha'],
+            toggle1: true,
+            }});
+    </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>
